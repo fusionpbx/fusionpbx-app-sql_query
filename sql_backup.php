@@ -34,7 +34,7 @@
 	require_once "resources/check_auth.php";
 
 //check permisions
-	if (permission_exists('exec_sql_backup')) {
+	if (permission_exists('sql_query_backup')) {
 		//access granted
 	}
 	else {
