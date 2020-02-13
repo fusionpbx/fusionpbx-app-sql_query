@@ -30,7 +30,7 @@
 	require_once "resources/check_auth.php";
 
 //check permissions
-	if (if_group("superadmin")) {
+	if (permission_exists('sql_query_backup')) {
 		//access granted
 	}
 	else {
