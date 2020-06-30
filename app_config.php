@@ -5,7 +5,7 @@
 		$apps[$x]['uuid'] = "7102e551-155a-4c88-b028-f8f669c682b5";
 		$apps[$x]['category'] = "System";
 		$apps[$x]['subcategory'] = "";
-		$apps[$x]['version'] = "1.0";
+		$apps[$x]['version'] = "2.1";
 		$apps[$x]['license'] = "Mozilla Public License 1.1";
 		$apps[$x]['url'] = "http://www.fusionpbx.com";
 		$apps[$x]['description']['en-us'] = "Provides a conventient way to SQL commands.";
