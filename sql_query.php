@@ -184,7 +184,7 @@
 	echo "						<option value=''></option>\n";
 	switch ($db_type) {
 		case 'sqlite': $sql = "select name from sqlite_master where type='table' order by name;"; break;
-		case 'pgsql': $sql = "select table_name as name from information_schema.tables where table_schema='public' and (table_type='BASE TABLE' or table_type='VIEW') order by table_name"; break;
+		case 'pgsql': $sql = "select table_name as name from information_schema.tables where table_schema='public' and (table_type='BASE TABLE' or table_type='VIEW') order by table_type, table_name"; break;
 		case 'mysql': $sql = "show tables"; break;
 	}
 	$database = new database;
