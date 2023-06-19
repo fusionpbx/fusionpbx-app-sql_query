@@ -135,7 +135,7 @@
 		$footer = "<body>\n";
 		$footer .= "<html>\n";
 
-		if ($sql_type == '') {
+		if (empty($sql_type)) {
 
 			echo $header;
 
@@ -156,25 +156,28 @@
 					echo "<span style='display: block; font-family: monospace; padding: 8px; color: green; background-color: #eefff0;'>".escape($sql).";</span><br />";
 				}
 
+				//connect to the database and run the sql query
 				$database = new database;
 				$result = $database->execute($sql, null, 'all');
 				$message = $database->message;
 
-				if ($message['message'] == 'OK' && $message['code'] == 200) {
+				//show the number of records in the result
+				if (!empty($result) && is_array($result)) {
 					echo "<b>".$text['label-records'].": ".count($result)."</b>";
 					echo "<br /><br />\n";
 				}
 				else {
 					echo "<b>".$text['label-error']."</b>";
 					echo "<br /><br />\n";
-					echo $message['message'].' ['.$message['code']."]<br />\n";
-					if (is_array($message['error']) && @sizeof($message['error']) != 0) {
+					echo $message['message']."<br />\n";
+					if (!empty($message['error'])) {
 						foreach ($message['error'] as $error) {
 							echo "<pre>".$error."</pre><br /><br />\n";
 						}
 					}
 				}
 
+				//show the results from the SQL query
 				echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'>\n";
 				$x = 0;
 				if (is_array($result[0])) {
