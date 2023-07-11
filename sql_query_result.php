@@ -217,7 +217,7 @@
 		if ($sql_type == "inserts") {
 			echo $header;
 
-			$sql = trim($sql);
+			$sql = trim($sql ?? '');
 
 			//get the table data
 				$sql = (strlen($sql_cmd) == 0 && in_array($table_name, $tables)) ? "select * from ".$table_name : $sql_cmd;
