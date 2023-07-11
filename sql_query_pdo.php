@@ -44,7 +44,7 @@
 	}
 
 //get the db connection information
-	if (is_uuid($_REQUEST['id'])) {
+	if (!empty($_REQUEST['id']) && is_uuid($_REQUEST['id'])) {
 		$sql = "select * from v_databases ";
 		$sql .= "where database_uuid = :database_uuid ";
 		$parameters['database_uuid'] = $_REQUEST['id'];
