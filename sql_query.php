@@ -43,15 +43,15 @@
 	$text = $language->get();
 
 // load editor preferences/defaults
-	$setting_size = ($_SESSION["editor"]["font_size"]["text"] != '') ? $_SESSION["editor"]["font_size"]["text"] : '12px';
-	$setting_theme = ($_SESSION["editor"]["theme"]["text"] != '') ? $_SESSION["editor"]["theme"]["text"] : 'cobalt';
-	$setting_invisibles = ($_SESSION["editor"]["invisibles"]["boolean"] != '') ? $_SESSION["editor"]["invisibles"]["boolean"] : 'false';
-	$setting_indenting = ($_SESSION["editor"]["indent_guides"]["boolean"] != '') ? $_SESSION["editor"]["indent_guides"]["boolean"] : 'false';
-	$setting_numbering = ($_SESSION["editor"]["line_numbers"]["boolean"] != '') ? $_SESSION["editor"]["line_numbers"]["boolean"] : 'true';
+	$setting_size = (!empty($_SESSION["editor"]["font_size"]["text"])) ? $_SESSION["editor"]["font_size"]["text"] : '12px';
+	$setting_theme = (!empty($_SESSION["editor"]["theme"]["text"])) ? $_SESSION["editor"]["theme"]["text"] : 'cobalt';
+	$setting_invisibles = (!empty($_SESSION["editor"]["invisibles"]["boolean"])) ? $_SESSION["editor"]["invisibles"]["boolean"] : 'false';
+	$setting_indenting = (!empty($_SESSION["editor"]["indent_guides"]["boolean"])) ? $_SESSION["editor"]["indent_guides"]["boolean"] : 'false';
+	$setting_numbering = (!empty($_SESSION["editor"]["line_numbers"]["boolean"])) ? $_SESSION["editor"]["line_numbers"]["boolean"] : 'true';
 
 //get the html values and set them as variables
-	$code = trim($_POST["code"]);
-	$command = trim($_POST["command"]);
+	$code = trim($_POST["code"] ?? '');
+	$command = trim($_POST["command"] ?? '');
 
 //check the captcha
 	$command_authorized = false;
@@ -219,7 +219,7 @@
 	echo "<br>";
 
 //html form
-	echo "<input type='hidden' name='id' value='".escape($_REQUEST['id'])."'>\n"; //sql db id
+	echo "<input type='hidden' name='id' value='".escape($_REQUEST['id'] ?? '')."'>\n"; //sql db id
 	echo "<textarea name='command' id='command' style='display: none;'></textarea>";
 	echo "<table cellpadding='0' cellspacing='0' border='0' style='width: 100%;'>\n";
 	echo "	<tr>";
@@ -240,7 +240,7 @@
 	?>
 	<table cellpadding='0' cellspacing='0' border='0' style='width: 100%;'>
 		<tr>
-			<td valign='middle' style='padding: 0 6px;' width='100%'><span id='description'><?php echo $text['description-'.$handler]; ?></span></td>
+			<td valign='middle' style='padding: 0 6px;' width='100%'><span id='description'><?php echo !empty($text['description-'.!empty($handler)]); ?></span></td>
 			<td valign='middle' style='padding: 0;'><img src='resources/images/blank.gif' style='width: 1px; height: 30px; border: none;'></td>
 			<td valign='middle' style='padding-left: 6px;'><img src='resources/images/icon_numbering.png' title='Toggle Line Numbers' class='control' onclick="toggle_option('numbering');"></td>
 			<td valign='middle' style='padding-left: 6px;'><img src='resources/images/icon_invisibles.png' title='Toggle Invisibles' class='control' onclick="toggle_option('invisibles');"></td>
