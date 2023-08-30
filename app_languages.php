@@ -10,7 +10,7 @@ $text['title-databases']['es-cl'] = "Bases de datos";
 $text['title-databases']['es-mx'] = "Bases de datos"; //copied from es-cl
 $text['title-databases']['fr-ca'] = "Bases de données"; //copied from fr-fr
 $text['title-databases']['fr-fr'] = "Bases de données";
-$text['title-databases']['he-il'] = "Databanken";
+$text['title-databases']['he-il'] = "מאגרי מידע";
 $text['title-databases']['it-it'] = "Database";
 $text['title-databases']['nl-nl'] = "Databases";
 $text['title-databases']['pl-pl'] = "Bazy danych";
@@ -199,7 +199,7 @@ $text['label-result_type']['es-cl'] = "Resultado";
 $text['label-result_type']['es-mx'] = "Resultado"; //copied from es-cl
 $text['label-result_type']['fr-ca'] = "Résultat"; //copied from fr-fr
 $text['label-result_type']['fr-fr'] = "Résultat";
-$text['label-result_type']['he-il'] = "Rezultate";
+$text['label-result_type']['he-il'] = "תוֹצָאָה";
 $text['label-result_type']['it-it'] = "Risultato";
 $text['label-result_type']['nl-nl'] = "Resultaat";
 $text['label-result_type']['pl-pl'] = "Rezultat";
@@ -443,7 +443,7 @@ $text['description-sql']['uk-ua'] = "Виконання операторів з�
 
 $text['description-php']['en-us'] = "Execute PHP commands.  See: <a href='http://php.net/manual/' target='_blank'>PHP Manual</a>";
 $text['description-php']['en-gb'] = "Execute PHP commands.  See: <a href='http://php.net/manual/' target='_blank'>PHP Manual</a>";
-$text['description-php']['ar-eg'] = "نفذ أوامر PHP.";
+$text['description-php']['ar-eg'] = "تنفيذ أوامر PHP. راجع: <a href='http://php.net/manual/' target='_blank'>دليل PHP</a>";
 $text['description-php']['de-at'] = "PHP Befehle ausführen. Benutzen Sie folgenden Link als PHP Referenz: <a href='http://php.net/manual/>PHP Manual</a>"; //copied from de-de
 $text['description-php']['de-ch'] = "PHP Befehle ausführen. Benutzen Sie folgenden Link als PHP Referenz: <a href='http://php.net/manual/>PHP Manual</a>"; //copied from de-de
 $text['description-php']['de-de'] = "PHP Befehle ausführen. Benutzen Sie folgenden Link als PHP Referenz: <a href='http://php.net/manual/>PHP Manual</a>";
@@ -451,13 +451,13 @@ $text['description-php']['es-cl'] = "Utilice el siguiente enlace como referencia
 $text['description-php']['es-mx'] = "Utilice el siguiente enlace como referencia para PHP: <a href='http://php.net/manual/' target='_blank'>Manual PHP</a>"; //copied from es-cl
 $text['description-php']['fr-ca'] = "Utiliser le lien suivant comme référence pour le PHP: <a href='http://php.net/manual/' target='_blank'>Manuel PHP</a>"; //copied from fr-fr
 $text['description-php']['fr-fr'] = "Utiliser le lien suivant comme référence pour le PHP: <a href='http://php.net/manual/' target='_blank'>Manuel PHP</a>";
-$text['description-php']['he-il'] = "בצע פקודות PHP.";
+$text['description-php']['he-il'] = "בצע פקודות PHP. ראה: <a href='http://php.net/manual/' target='_blank'>מדריך PHP</a>";
 $text['description-php']['it-it'] = "Esegue comandi PHP. Vedi: <a href='http://php.net/manual/' target='_blank'>Manuale PHP</a>";
 $text['description-php']['nl-nl'] = "Voer PHP commando's uit. Zie: <a href='http://php.net/manual/' target='_blank'>PHP Manual</a>";
 $text['description-php']['pl-pl'] = "Aby użyć odniesienia do PHP kliknij na ten link: <a href='http://php.net/manual/' target='_blank'>PHP Manual</a>";
 $text['description-php']['pt-br'] = "Utilize a ligação seguinte como referência para o PHP: <a href='http://php.net/manual/' target='_blank'>PHP Manual</a>"; //copied from pt-pt
 $text['description-php']['pt-pt'] = "Utilize a ligação seguinte como referência para o PHP: <a href='http://php.net/manual/' target='_blank'>PHP Manual</a>";
-$text['description-php']['ro-ro'] = "Executați comenzi PHP.";
+$text['description-php']['ro-ro'] = "Executați comenzi PHP. Consultați: <a href='http://php.net/manual/' target='_blank'>Manual PHP</a>";
 $text['description-php']['ru-ru'] = "Выполнение PHP команд. Смотрите: <a href='http://php.net/manual/' target='_blank'>PHP Manual</a>";
 $text['description-php']['sv-se'] = "Använd följande länk som en referens gällande PHP: <a href='http://php.net/manual/' target='_blank'>PHP Manual</a>";
 $text['description-php']['uk-ua'] = "Посилання на довідку PHP: <a href='http://php.net/manual/' target='_blank'>PHP Manual</a>";
