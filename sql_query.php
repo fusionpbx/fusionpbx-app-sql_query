@@ -42,7 +42,7 @@
 	$language = new text;
 	$text = $language->get();
 
-// load editor preferences/defaults
+//load editor preferences/defaults
 	$setting_size = (!empty($_SESSION["editor"]["font_size"]["text"])) ? $_SESSION["editor"]["font_size"]["text"] : '12px';
 	$setting_theme = (!empty($_SESSION["editor"]["theme"]["text"])) ? $_SESSION["editor"]["theme"]["text"] : 'cobalt';
 	$setting_invisibles = (!empty($_SESSION["editor"]["invisibles"]["boolean"])) ? $_SESSION["editor"]["invisibles"]["boolean"] : 'false';
@@ -151,10 +151,10 @@
 
 //create token
 	$object = new token;
-	$token = $object->create($_SERVER['PHP_SELF']);
+	$token = $object->create('/app/sql_query/sql_query.php');
 
-//show the header
-	echo "<form method='post' name='frm' id='frm' action='exec.php' style='margin: 0;' onsubmit='return submit_check();'>\n";
+//show the header 
+	echo "<form method='post' name='frm' id='frm' action='sql_query_result.php' style='margin: 0;' target='iframe' onsubmit='return submit_check();'>\n";
 	echo "<table cellpadding='0' cellspacing='0' border='0' width='100%'>";
 	echo "	<tr>";
 	echo "		<td valign='top' align='left' width='50%'>";
@@ -191,7 +191,7 @@
 	echo "					</select>\n";
 	echo "				</span>";
 
-	echo "				<input type='button' class='btn' style='margin-top: 0px;' title=\"".$text['button-execute']." [Ctrl+Enter]\" value=\"    ".$text['button-execute']."    \" onclick=\"$('form#frm').submit();\">";
+	echo "				<input type='submit' class='btn' style='margin-top: 0px;' title=\"".$text['button-execute']." [Ctrl+Enter]\" value=\"    ".$text['button-execute']."    \" >"; //onclick=\"$('form#frm').submit();\"
 	echo "				<input type='button' class='btn' style='margin-top: 0px;' title=\"\" value=\"    ".$text['button-reset']."    \" onclick=\"reset_editor();\">";
 
 	echo "		</td>\n";
@@ -206,8 +206,8 @@
 
 //html form
 	echo "<input type='hidden' name='id' value='".escape($_REQUEST['id'] ?? '')."'>\n"; //sql db id
-	echo "<textarea name='command' id='command' style='display: none;'></textarea>";
 	echo "<input type='hidden' name='".$token['name']."' value='".$token['hash']."'>\n";
+	echo "<textarea name='command' id='command' style='display: none;'></textarea>";
 	echo "<table cellpadding='0' cellspacing='0' border='0' style='width: 100%;'>\n";
 	echo "	<tr>";
 	echo "		<td style='width: 280px;' valign='top' nowrap>";

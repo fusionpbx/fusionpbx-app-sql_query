@@ -48,8 +48,9 @@
 
 //validate the token
 	$token = new token;
-	if (!$token->validate($_SERVER['PHP_SELF'])) {
+	if (!$token->validate('/app/sql_query/sql_query.php')) {
 		message::add($text['message-invalid_token'],'negative');
+		echo "invalid token\n";
 		exit;
 	}
 
@@ -69,12 +70,12 @@
 	unset($sql, $rows, $row);
 
 //show the content
-	if (is_array($_POST)) {
+	if (!empty($_REQUEST)) {
 
 		//get the sql type, command and name
-		$sql_type = trim($_POST["sql_type"]);
-		$sql_cmd = trim($_POST["command"]);
-		$table_name = trim($_POST["table_name"]);
+		$sql_type = trim($_REQUEST["sql_type"]);
+		$sql_cmd = trim($_REQUEST["command"]);
+		$table_name = trim($_REQUEST["table_name"]);
 	
 		$header = "<html>\n";
 		$header .= "<head>\n";
