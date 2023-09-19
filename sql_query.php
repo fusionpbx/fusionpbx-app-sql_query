@@ -226,10 +226,10 @@
 	echo "		<td style='width: 280px;' valign='top' nowrap>";
 
 	echo "			<table cellpadding='0' cellspacing='0' border='0' width='100%' height='100%'>";
-	if (permission_exists('edit_view') && file_exists($_SERVER["PROJECT_ROOT"]."/app/edit/")) {
+	if (permission_exists('edit_view').) {
 		echo "			<tr>";
 		echo "				<td valign='top' height='100%'>";
-		echo "					<iframe id='clip_list' src='".PROJECT_PATH."/app/edit/clip_list.php' style='border: none; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; height: calc(100% - 2px); width: calc(100% - 15px);'></iframe>\n";
+		echo "					<iframe id='clip_list' src='".PROJECT_PATH."/clip_list.php' style='border: none; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; height: calc(100% - 2px); width: calc(100% - 15px);'></iframe>\n";
 		echo "				</td>";
 		echo "			</tr>";
 	}
