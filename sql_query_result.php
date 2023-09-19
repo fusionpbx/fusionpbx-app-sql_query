@@ -46,14 +46,10 @@
 		require_once "sql_query_pdo.php";
 	}
 
-//check the captcha
-	$code = trim($_REQUEST["code"]);
-	$command_authorized = false;
-	if (strtolower($_SESSION['captcha']) == strtolower($code)) {
-		$command_authorized = true;
-	}
-	if (!$command_authorized) {
-		//catpcha invalid
+//validate the token
+	$token = new token;
+	if (!$token->validate($_SERVER['PHP_SELF'])) {
+		message::add($text['message-invalid_token'],'negative');
 		exit;
 	}
 
@@ -74,6 +70,8 @@
 
 //show the content
 	if (is_array($_POST)) {
+
+		//get the sql type, command and name
 		$sql_type = trim($_POST["sql_type"]);
 		$sql_cmd = trim($_POST["command"]);
 		$table_name = trim($_POST["table_name"]);

@@ -53,14 +53,6 @@
 	$code = trim($_POST["code"] ?? '');
 	$command = trim($_POST["command"] ?? '');
 
-//check the captcha
-	$command_authorized = false;
-	if (strlen($code) > 0) {
-		if (strtolower($_SESSION['captcha']) == strtolower($code)) {
-			$command_authorized = true;
-		}
-	}
-
 //set editor moder
 	$mode = 'sql';
 
@@ -157,11 +149,9 @@
 
 <?php
 
-//generate the captcha image
-	$_SESSION['captcha'] = generate_password(7, 2);
-	$captcha = new captcha;
-	$captcha->code = $_SESSION['captcha'];
-	$image_base64 = $captcha->image_base64();
+//create token
+	$object = new token;
+	$token = $object->create($_SERVER['PHP_SELF']);
 
 //show the header
 	echo "<form method='post' name='frm' id='frm' action='exec.php' style='margin: 0;' onsubmit='return submit_check();'>\n";
@@ -171,10 +161,6 @@
 	echo "			<b>".$text['title-sql_query']."</b>\n";
 	echo "		</td>";
 	echo "		<td valign='top' align='right' nowrap='nowrap'>";
-
-	//add the captcha
-	echo "				<img src=\"data:image/png;base64, ".$image_base64."\" /><input type='text' class='txt' style='width: 150px; margin-left: 15px;' name='code' id='code' value=''>\n";
-	echo "				&nbsp; &nbsp; &nbsp;\n";
 
 	//sql controls
 	echo "				<span class='sql_controls'>";
@@ -221,6 +207,7 @@
 //html form
 	echo "<input type='hidden' name='id' value='".escape($_REQUEST['id'] ?? '')."'>\n"; //sql db id
 	echo "<textarea name='command' id='command' style='display: none;'></textarea>";
+	echo "<input type='hidden' name='".$token['name']."' value='".$token['hash']."'>\n";
 	echo "<table cellpadding='0' cellspacing='0' border='0' style='width: 100%;'>\n";
 	echo "	<tr>";
 	echo "		<td style='width: 280px;' valign='top' nowrap>";
