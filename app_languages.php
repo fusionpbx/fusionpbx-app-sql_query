@@ -829,4 +829,53 @@ $text['message-delete-clip']['ru-ru'] = "Вы действительно хот�
 $text['message-delete-clip']['sv-se'] = "Är du säker på att du vill radera det valda klippet?";
 $text['message-delete-clip']['uk-ua'] = "Ви впевнені, що ви хочете видалити вибраний кліп?";
 
+
+$text['message-give-up']['en-us'] = "Giving up :( Cannot create an XMLHTTP instance";
+$text['message-give-up']['en-gb'] = "Giving up :( Cannot create an XMLHTTP instance";
+$text['message-give-up']['ar-eg'] = ": لا يُمكن أن يُخلق مثال على ذلك";
+$text['message-give-up']['de-at'] = "Vorgang abgebrochen :( Konnte XMLHTTP Instanz nich erzeugen";
+$text['message-give-up']['de-ch'] = "Vorgang abgebrochen :( Konnte XMLHTTP Instanz nich erzeugen";
+$text['message-give-up']['de-de'] = "Vorgang abgebrochen :( Konnte XMLHTTP Instanz nich erzeugen";
+$text['message-give-up']['es-cl'] = "Cancelando, no se puede crear una instancia XMLHTTP";
+$text['message-give-up']['es-mx'] = "Cancelando, no se puede crear una instancia XMLHTTP";
+$text['message-give-up']['fr-ca'] = "Abandonner :( Ne peut pas créer un instance XMLHTTP";
+$text['message-give-up']['fr-fr'] = "Abandonner :( Ne peut pas créer un instance XMLHTTP";
+$text['message-give-up']['he-il'] = "לוותר:( לא יכול ליצור מקרה XMLHTTP";
+$text['message-give-up']['it-it'] = "Abbandono :( Non riesco a creare un'instanza XMLHTTP";
+$text['message-give-up']['nl-nl'] = "Opgegeven :( kan geen XMLHTTP verbinding maken";
+$text['message-give-up']['pl-pl'] = "Śmiertelnia: (pol.). Cannot stworzył instancję XMLHTTP.";
+$text['message-give-up']['pt-br'] = "Desistindo :( Não é possível criar uma instância XMLHTTP";
+$text['message-give-up']['pt-pt'] = "Desistindo :( Não é possível criar uma instância XMLHTTP";
+$text['message-give-up']['ro-ro'] = "Renunțare :( Nu se poate crea o instanță XMLHTTP";
+$text['message-give-up']['ru-ru'] = "Операция отменена :( Невозможно создать XMLHTTP экземпляр";
+$text['message-give-up']['sv-se'] = "Ger upp :( Kan inte skapa en XMLHTTP instans";
+$text['message-give-up']['uk-ua'] = "Досягнення :( Не створювати екземпляр XMLHTTP";
+$text['message-give-up']['zh-cn'] = "放弃 :( 无法创建 XMLHTTP 实例";
+$text['message-give-up']['ja-jp'] = "諦めます:( XMLHTTP インスタンスを作成できません";
+$text['message-give-up']['ko-kr'] = "포기합니다 :( XMLHTTP 인스턴스를 생성할 수 없습니다";
+
+$text['message-problem']['en-us'] = "There was a problem with the request.";
+$text['message-problem']['en-gb'] = "There was a problem with the request.";
+$text['message-problem']['ar-eg'] = "كانت هناك مشكلة مع الطلب";
+$text['message-problem']['de-at'] = "Es gab ein Problem mit der Anfrage.";
+$text['message-problem']['de-ch'] = "Es gab ein Problem mit der Anfrage.";
+$text['message-problem']['de-de'] = "Es gab ein Problem mit der Anfrage.";
+$text['message-problem']['es-cl'] = "Hubo un problema con la petición.";
+$text['message-problem']['es-mx'] = "Hubo un problema con la petición.";
+$text['message-problem']['fr-ca'] = "Il y avait un problème avec la demande.";
+$text['message-problem']['fr-fr'] = "Il y avait un problème avec la demande.";
+$text['message-problem']['he-il'] = "הייתה בעיה עם הבקשה.";
+$text['message-problem']['it-it'] = "C'è stato un problema con la richiesta.";
+$text['message-problem']['nl-nl'] = "Er was een prbleem emt de aanvraag";
+$text['message-problem']['pl-pl'] = "Na prośbę doszło do problemu.";
+$text['message-problem']['pt-br'] = "Ocorreu um problema com o pedido.";
+$text['message-problem']['pt-pt'] = "Ocorreu um problema com o pedido.";
+$text['message-problem']['ro-ro'] = "A apărut o problemă cu cererea.";
+$text['message-problem']['ru-ru'] = "Возникла проблема с запросом.";
+$text['message-problem']['sv-se'] = "Det uppstod ett problem med begäran.";
+$text['message-problem']['uk-ua'] = "Проблема з запитом.";
+$text['message-problem']['zh-cn'] = "这个要求有个问题。";
+$text['message-problem']['ja-jp'] = "リクエストに問題がありました。";
+$text['message-problem']['ko-kr'] = "요청에 문제가 발생했습니다.";
+
 ?>

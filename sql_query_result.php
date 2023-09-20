@@ -37,6 +37,13 @@
 		exit;
 	}
 
+//show blank iframe initially
+	if (empty($_REQUEST)) {
+		echo '&nbsp;';
+		exit;
+	}
+
+
 //add multi-lingual support
 	$language = new text;
 	$text = $language->get();

@@ -121,7 +121,7 @@
 
 		function reset_editor() {
 			editor.getSession().setValue('');
-			$('#iframe').prop('src','');
+			$('#iframe').prop('src','sql_query_result.php');
 			focus_editor();
 		}
 	</script>
@@ -369,7 +369,7 @@
 	echo "<span id='sql_response'>";
 	//echo "<b>".$text['label-results']."</b>\n";
 	//echo "<br /><br />\n";
-	echo "<iframe name='iframe' id='iframe' style='width: calc(100% - 3px); height: 500px; background-color: #fff; border: 0px solid #c0c0c0;'></iframe>\n";
+	echo "<iframe name='iframe' id='iframe' style='width: calc(100% - 3px); height: 500px; background-color: #fff; border: 0px solid #c0c0c0;' src='sql_query_result.php'></iframe>\n";
 	echo "</span>";
 
 //show the footer
