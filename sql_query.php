@@ -17,7 +17,7 @@
 
 	The Initial Developer of the Original Code is
 	Mark J Crane <markjcrane@fusionpbx.com>
-	Portions created by the Initial Developer are Copyright (C) 2008-2023
+	Portions created by the Initial Developer are Copyright (C) 2008-2024
 	the Initial Developer. All Rights Reserved.
 
 	Contributor(s):
@@ -126,24 +126,22 @@
 		}
 	</script>
 	<style>
-		img.control {
-			cursor: pointer;
-			width: auto;
-			height: 23px;
-			border: none;
-			opacity: 0.5;
-			}
-
-		img.control:hover {
-			opacity: 1.0;
-			}
-
 		div#editor {
 			box-shadow: 0 3px 10px #333;
 			text-align: left;
 			width: 100%;
 			height: calc(100% - 30px);
 			font-size: 12px;
+			}
+
+		i.ace_control {
+			cursor: pointer;
+			margin-right: 5px;
+			opacity: 0.5;
+			}
+
+		i.ace_control:hover {
+			opacity: 1.0;
 			}
 	</style>
 
@@ -229,12 +227,12 @@
 		<tr>
 			<td valign='middle' style='padding: 0 6px;' width='100%'><span id='description'><?php echo !empty($text['description-'.!empty($handler)]); ?></span></td>
 			<td valign='middle' style='padding: 0;'><img src='resources/images/blank.gif' style='width: 1px; height: 30px; border: none;'></td>
-			<td valign='middle' style='padding-left: 6px;'><img src='resources/images/icon_numbering.png' title='Toggle Line Numbers' class='control' onclick="toggle_option('numbering');"></td>
-			<td valign='middle' style='padding-left: 6px;'><img src='resources/images/icon_invisibles.png' title='Toggle Invisibles' class='control' onclick="toggle_option('invisibles');"></td>
-			<td valign='middle' style='padding-left: 6px;'><img src='resources/images/icon_indenting.png' title='Toggle Indent Guides' class='control' onclick="toggle_option('indenting');"></td>
-			<!--<td valign='middle' style='padding-left: 6px;'><img src='resources/images/icon_replace.png' title='Show Find/Replace [Ctrl+H]' class='control' onclick="editor.execCommand('replace');"></td>-->
-			<td valign='middle' style='padding-left: 6px;'><img src='resources/images/icon_goto.png' title='Show Go To Line' class='control' onclick="editor.execCommand('gotoline');"></td>
-			<td valign='middle' style='padding-left: 10px;'>
+			<td valign='middle' style='padding-left: 6px;'><i class='fas fa-list-ul fa-lg ace_control' title="<?php echo $text['label-toggle_line_numbers']; ?>" onclick="toggle_option('numbering');"></i></td>
+			<td valign='middle' style='padding-left: 6px;'><i class='fas fa-eye-slash fa-lg ace_control' title="<?php echo $text['label-toggle_invisibles']; ?>" onclick="toggle_option('invisibles');"></i></td>
+			<td valign='middle' style='padding-left: 6px;'><i class='fas fa-indent fa-lg ace_control' title="<?php echo $text['label-toggle_indent_guides']; ?>" onclick="toggle_option('indenting');"></i></td>
+			<td valign='middle' style='padding-left: 6px;'><i class='fas fa-search fa-lg ace_control' title="<?php echo $text['label-find_replace']; ?>" onclick="editor.execCommand('replace');"></i></td>
+			<td valign='middle' style='padding-left: 6px;'><i class='fas fa-chevron-down fa-lg ace_control' title="<?php echo $text['label-go_to_line']; ?>" onclick="editor.execCommand('gotoline');"></i></td>
+			<td valign='middle' style='padding-left: 15px;'>
 				<select id='mode' style='height: 23px;' onchange="editor.getSession().setMode((this.options[this.selectedIndex].value == 'php') ? {path:'ace/mode/php', inline:true} : 'ace/mode/' + this.options[this.selectedIndex].value); focus_editor();">
 					<?php
 					$modes['php'] = 'PHP';
