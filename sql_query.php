@@ -151,7 +151,7 @@
 	$object = new token;
 	$token = $object->create('/app/sql_query/sql_query.php');
 
-//show the header 
+//show the header
 	echo "<form method='post' name='frm' id='frm' action='sql_query_result.php' style='margin: 0;' target='iframe' onsubmit='return submit_check();'>\n";
 	echo "<table cellpadding='0' cellspacing='0' border='0' width='100%'>";
 	echo "	<tr>";
@@ -203,25 +203,26 @@
 	echo "<br>";
 
 //html form
-	echo "<input type='hidden' name='id' value='".escape($_REQUEST['id'] ?? '')."'>\n"; //sql db id
-	echo "<input type='hidden' name='".$token['name']."' value='".$token['hash']."'>\n";
-	echo "<textarea name='command' id='command' style='display: none;'></textarea>";
-	echo "<table cellpadding='0' cellspacing='0' border='0' style='width: 100%;'>\n";
-	echo "	<tr>";
-	echo "		<td style='width: 280px;' valign='top' nowrap>";
+	echo "<div class='card'>\n";
+	echo "	<input type='hidden' name='id' value='".escape($_REQUEST['id'] ?? '')."'>\n"; //sql db id
+	echo "	<input type='hidden' name='".$token['name']."' value='".$token['hash']."'>\n";
+	echo "	<textarea name='command' id='command' style='display: none;'></textarea>";
+	echo "	<table cellpadding='0' cellspacing='0' border='0' style='width: 100%;'>\n";
+	echo "		<tr>";
+	echo "			<td style='width: 280px;' valign='top' nowrap>";
 
-	echo "			<table cellpadding='0' cellspacing='0' border='0' width='100%' height='100%'>";
+	echo "				<table cellpadding='0' cellspacing='0' border='0' width='100%' height='100%'>";
 	if (permission_exists('edit_view')) {
-		echo "			<tr>";
-		echo "				<td valign='top' height='100%'>";
-		echo "					<iframe id='clip_list' src='clip_list.php' style='border: none; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; height: calc(100% - 2px); width: calc(100% - 15px);'></iframe>\n";
-		echo "				</td>";
-		echo "			</tr>";
+		echo "				<tr>";
+		echo "					<td valign='top' height='100%'>";
+		echo "						<iframe id='clip_list' src='clip_list.php' style='border: none; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; height: calc(100% - 2px); width: calc(100% - 15px);'></iframe>\n";
+		echo "					</td>";
+		echo "				</tr>";
 	}
-	echo "			</table>";
+	echo "				</table>";
 
-	echo "		</td>";
-	echo "		<td valign='top' style='height: 400px;'>"
+	echo "			</td>";
+	echo "			<td valign='top' style='height: 400px;'>"
 	?>
 	<table cellpadding='0' cellspacing='0' border='0' style='width: 100%;'>
 		<tr>
@@ -320,11 +321,11 @@
 	<div id='editor' style='resize:vertical; overflow:auto;'><?php echo $command; ?></div>
 
 	<?php
-	echo "		</td>";
-	echo "	</tr>\n";
-	echo "</table>";
-	echo "</form>";
-	echo "<br /><br />";
+	echo "			</td>";
+	echo "		</tr>\n";
+	echo "	</table>";
+	echo "	</form>";
+	echo "	<br /><br />";
 	?>
 
 	<script type="text/javascript" src="<?php echo PROJECT_PATH; ?>/resources/ace/ace.js" charset="utf-8"></script>
@@ -364,11 +365,12 @@
 <?php
 
 //sql result
-	echo "<span id='sql_response'>";
-	//echo "<b>".$text['label-results']."</b>\n";
-	//echo "<br /><br />\n";
-	echo "<iframe name='iframe' id='iframe' style='width: calc(100% - 3px); height: 500px; background-color: #fff; border: 0px solid #c0c0c0;' src='sql_query_result.php'></iframe>\n";
-	echo "</span>";
+	echo "	<span id='sql_response'>";
+	//echo "		<b>".$text['label-results']."</b>\n";
+	//echo "		<br /><br />\n";
+	echo "		<iframe name='iframe' id='iframe' style='width: calc(100% - 3px); height: 500px; background-color: #fff; border: 0px solid #c0c0c0;' src='sql_query_result.php'></iframe>\n";
+	echo "	</span>";
+	echo "</div>\n";
 
 //show the footer
 	require_once "resources/footer.php";

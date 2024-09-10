@@ -96,6 +96,7 @@
 	$row_style["0"] = "row_style0";
 	$row_style["1"] = "row_style1";
 
+	echo "<div class='card'>\n";
 	echo "<table class='tr_hover' width='100%' border='0' cellpadding='0' cellspacing='0'>\n";
 	echo "<tr>\n";
 	echo th_order_by('database_type', $text['label-type'], $order_by, $order);
@@ -123,6 +124,7 @@
 	unset($result, $row);
 
 	echo "</table>";
+	echo "</div>\n";
 	echo "<br><br>";
 
 //include the footer
