@@ -64,7 +64,7 @@
 		$array['clips'][0]['clip_desc'] = $clip_desc;
 		$array['clips'][0]['clip_order'] = $clip_order;
 
-		$p = permissions:new();
+		$p = permissions::new();
 		$p->add('clip_edit', 'temp');
 
 		$database = new database;
@@ -72,8 +72,6 @@
 		$database->app_uuid = '17e628ee-ccfa-49c0-29ca-9894a0384b9b';
 		$database->save($array);
 		unset($array);
-
-		$p->add('clip_edit', 'temp');
 
 		//redirect the browser
 		require_once "header.php";
