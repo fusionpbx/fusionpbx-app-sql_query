@@ -30,7 +30,7 @@
 	require_once "resources/check_auth.php";
 
 //check permissions
-	if (permission_exists('edit_save')) {
+	if (permission_exists('clip_add')) {
 		//access granted
 	}
 	else {
@@ -64,7 +64,7 @@ if (count($_POST)>0) {
 	$array['clips'][0]['clip_desc'] = $clip_desc;
 	$array['clips'][0]['clip_order'] = $clip_order;
 
-	$p = permissions:new();
+	$p = permissions::new();
 	$p->add('clip_add', 'temp');
 
 	$database = new database;
