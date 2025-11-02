@@ -139,7 +139,7 @@
 				foreach ($result_2 as &$row_2) {
 					foreach ($column_array as $column) {
 						$columns[] = $column;
-						$values[] = $row_2[$column] != '' ? "'".check_str($row_2[$column])."'" : 'null';
+						$values[] = $row_2[$column] != '' ? "'".($row_2[$column] ?? '')."'" : 'null';
 					}
 					$sql = "insert into ".$table_name." (";
 					$sql .= implode(', ', $columns);

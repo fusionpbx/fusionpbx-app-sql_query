@@ -479,7 +479,7 @@
 										//	$sql .= "'".$dest_domain_uuid."',";
 										//}
 										//else {
-											$sql .= "'".check_str($row[$column])."', ";
+											$sql .= "'".($row[$column] ?? '')."', ";
 										//}
 									}
 									else {
@@ -487,7 +487,7 @@
 										//	$sql .= "'".$dest_domain_uuid."'";
 										//}
 										//else {
-											$sql .= "'".check_str($row[$column])."'";
+											$sql .= "'".($row[$column] ?? '')."'";
 										//}
 									}
 									$x++;
