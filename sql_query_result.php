@@ -29,10 +29,7 @@
 	require_once "resources/check_auth.php";
 
 //check permissions
-	if (permission_exists('sql_query')) {
-		//access granted
-	}
-	else {
+	if (!permission_exists('sql_query')) {
 		echo "access denied";
 		exit;
 	}
