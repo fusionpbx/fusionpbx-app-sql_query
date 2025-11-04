@@ -17,7 +17,7 @@
 
 	The Initial Developer of the Original Code is
 	Mark J Crane <markjcrane@fusionpbx.com>
-	Portions created by the Initial Developer are Copyright (C) 2008-2023
+	Portions created by the Initial Developer are Copyright (C) 2008-2025
 	the Initial Developer. All Rights Reserved.
 
 	Contributor(s):
@@ -85,5 +85,3 @@ echo "</SCRIPT>\n";
 echo "</head>\n";
 echo "<body style='margin: 0; padding: 5px;'>\n";
 echo "<div align='center'>\n";
-
-?>

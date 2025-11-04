@@ -878,4 +878,26 @@ $text['message-problem']['zh-cn'] = "这个要求有个问题。";
 $text['message-problem']['ja-jp'] = "リクエストに問題がありました。";
 $text['message-problem']['ko-kr'] = "요청에 문제가 발생했습니다.";
 
-?>
+$text['title-manage-clips']['en-us'] = "Manage Clips";
+$text['title-manage-clips']['en-gb'] = "Manage Clips";
+$text['title-manage-clips']['ar-eg'] = "شرائط إدارة";
+$text['title-manage-clips']['de-at'] = "Clips verwalten";
+$text['title-manage-clips']['de-ch'] = "Clips verwalten";
+$text['title-manage-clips']['de-de'] = "Clips verwalten";
+$text['title-manage-clips']['es-cl'] = "Gestión de Clips";
+$text['title-manage-clips']['es-mx'] = "Gestión de Clips";
+$text['title-manage-clips']['fr-ca'] = "Gérer les clips";
+$text['title-manage-clips']['fr-fr'] = "Gérer les clips";
+$text['title-manage-clips']['he-il'] = "ניהול קליפים";
+$text['title-manage-clips']['it-it'] = "Gestione Clips";
+$text['title-manage-clips']['nl-nl'] = "Beheer Clips";
+$text['title-manage-clips']['pl-pl'] = "klip";
+$text['title-manage-clips']['pt-br'] = "Gerir Clipes";
+$text['title-manage-clips']['pt-pt'] = "Gerir Clipes";
+$text['title-manage-clips']['ro-ro'] = "Gestionați clipurile";
+$text['title-manage-clips']['ru-ru'] = "Управление клипами";
+$text['title-manage-clips']['sv-se'] = "Hantera Klipp";
+$text['title-manage-clips']['uk-ua'] = "Manage кліпи";
+$text['title-manage-clips']['zh-cn'] = "管理剪辑";
+$text['title-manage-clips']['ja-jp'] = "クリップの管理";
+$text['title-manage-clips']['ko-kr'] = "클립 관리";

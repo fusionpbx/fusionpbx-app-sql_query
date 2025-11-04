@@ -17,7 +17,7 @@
 
 	The Initial Developer of the Original Code is
 	Mark J Crane <markjcrane@fusionpbx.com>
-	Portions created by the Initial Developer are Copyright (C) 2008-2023
+	Portions created by the Initial Developer are Copyright (C) 2008-2025
 	the Initial Developer. All Rights Reserved.
 
 	Contributor(s):
@@ -45,6 +45,9 @@
 	$language = new text;
 	$text = $language->get();
 
+//connect to the database
+	$database = database::new();
+
 //pdo database connection
 	if (strlen($_REQUEST['id']) > 0) {
 		require_once "sql_query_pdo.php";
@@ -64,7 +67,6 @@
 		case 'pgsql': $sql = "select table_name as name from information_schema.tables where table_schema='public' and (table_type='BASE TABLE' or table_type='VIEW') order by table_type, table_name"; break;
 		case 'mysql': $sql = "show tables"; break;
 	}
-	$database = new database;
 	$rows = $database->select($sql, null, 'all');
 	if (is_array($rows) && @sizeof($rows) != 0) {
 		foreach ($rows as $row) {
@@ -80,7 +82,7 @@
 		$sql_type = trim($_REQUEST["sql_type"]);
 		$sql_cmd = trim($_REQUEST["command"]);
 		$table_name = trim($_REQUEST["table_name"]);
-	
+
 		$header = "<html>\n";
 		$header .= "<head>\n";
 		$header .= "<style type='text/css'>\n";
@@ -147,11 +149,11 @@
 			$row_style["1"] = "row_style1";
 
 			//determine queries to run and show
-			if ($sql_cmd != '') { $sql_array = array_filter(explode(";", $sql_cmd)); }
-			if ($table_name != '' && in_array($table_name, $tables)) { $sql_array[] = "select * from ".$table_name; }
-			$show_query = (sizeof($sql_array) > 1) ? true : false;
+			if (!empty($sql_cmd)) { $sql_array = array_filter(explode(";", $sql_cmd)); }
+			if (!empty($table_name) && in_array($table_name, $tables)) { $sql_array[] = "select * from ".$table_name; }
+			$show_query = (!empty($sql_array) && sizeof($sql_array) > 1) ? true : false;
 
-			if (is_array($sql_array)) foreach($sql_array as $sql_index => $sql) {
+			if (!empty($sql_array) && is_array($sql_array)) foreach($sql_array as $sql_index => $sql) {
 				$sql = trim($sql);
 
 				if (sizeof($sql_array) > 1 || $show_query) {
@@ -160,7 +162,6 @@
 				}
 
 				//connect to the database and run the sql query
-				$database = new database;
 				$result = $database->execute($sql, null, 'all');
 				$message = $database->message;
 
@@ -226,7 +227,6 @@
 				$sql = (strlen($sql_cmd) == 0 && in_array($table_name, $tables)) ? "select * from ".$table_name : $sql_cmd;
 
 				if (strlen($sql) > 0) {
-					$database = new database;
 					$result = $database->execute($sql);
 					$message = $database->message;
 
@@ -346,5 +346,3 @@
 				}
 		}
 	}
-
-?>

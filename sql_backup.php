@@ -17,7 +17,7 @@
 
 	The Initial Developer of the Original Code is
 	Mark J Crane <markjcrane@fusionpbx.com>
-	Portions created by the Initial Developer are Copyright (C) 2008-2014
+	Portions created by the Initial Developer are Copyright (C) 2008-2025
 	the Initial Developer. All Rights Reserved.
 
 	Contributor(s):
@@ -37,10 +37,7 @@
 	require_once "resources/check_auth.php";
 
 //check permisions
-	if (permission_exists('sql_query_backup')) {
-		//access granted
-	}
-	else {
+	if (!permission_exists('sql_query_backup')) {
 		echo "access denied";
 		exit;
 	}
@@ -48,6 +45,9 @@
 //add multi-lingual support
 	$language = new text;
 	$text = $language->get();
+
+//connect to the database
+	$database = database::new();
 
 //pdo database connection
 	if (strlen($_REQUEST['id']) > 0) {
@@ -111,7 +111,6 @@
 	if ($db_type == "mysql") {
 		$sql = "show tables";
 	}
-	$database = new database;
 	$result_1 = $database->select($sql, null, 'all');
 	unset($sql);
 
@@ -122,7 +121,6 @@
 
 			//get the table data
 				$sql = "select * from ".$table_name;
-				$database = new database;
 				$result_2 = $database->select($sql, null, 'all');
 				unset($sql);
 
@@ -156,5 +154,3 @@
 		}
 	}
 	unset($result_1, $row_1);
-
-?>

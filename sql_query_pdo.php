@@ -17,7 +17,7 @@
 
  The Initial Developer of the Original Code is
  Mark J Crane <markjcrane@fusionpbx.com>
- Portions created by the Initial Developer are Copyright (C) 2008-2023
+ Portions created by the Initial Developer are Copyright (C) 2008-2025
  the Initial Developer. All Rights Reserved.
 
  Contributor(s):
@@ -34,6 +34,9 @@
 		exit;
 	}
 
+//connect to the database
+	$database = database::new();
+
  //set the default values
 	if (isset($db_file_path) > 0) {
 		$db_path = $db_file_path;
@@ -45,7 +48,6 @@
 		$sql = "select * from v_databases ";
 		$sql .= "where database_uuid = :database_uuid ";
 		$parameters['database_uuid'] = $_REQUEST['id'];
-		$database = new database;
 		$row = $database->select($sql, $parameters, 'row');
 		if (is_array($row) && @sizeof($row) != 0) {
 			$db_type = $row["database_type"];
@@ -70,29 +72,27 @@ if (!function_exists('get_db_field_names')) {
 		}
 
 		// if we're still here, we need to try something else
-		$fields 	= array();
+		$fields = array();
 		$driver = $db->getAttribute(PDO::ATTR_DRIVER_NAME);
 		if ($driver == 'sqlite') {
-			$query 		= sprintf("Pragma table_info(%s);", $table);
-			$stmt 		= $db->prepare($query);
-			$result 	= $stmt->execute();
-			$rows 		= $stmt->fetchAll(PDO::FETCH_NAMED);
+			$query = sprintf("Pragma table_info(%s);", $table);
+			$stmt = $db->prepare($query);
+			$result = $stmt->execute();
+			$rows = $stmt->fetchAll(PDO::FETCH_NAMED);
 			//printf('<pre>%s</pre>', print_r($rows, true));
-			$row_count 	= count($rows);
+			$row_count = count($rows);
 			//printf('<pre>%s</pre>', print_r($rows, true));
 			for ($i = 0; $i < $row_count; $i++) {
 				array_push($fields, $rows[$i]['name']);
 			}
 			return $fields;
-		} else {
-			$query 		= sprintf("SELECT * FROM information_schema.columns
-			WHERE table_schema='%s' AND table_name='%s';"
-			, $db_name, $table
-			);
-			$stmt 		= $db->prepare($query);
-			$result 	= $stmt->execute();
-			$rows 		= $stmt->fetchAll(PDO::FETCH_NAMED);
-			$row_count 	= count($rows);
+		}
+		else {
+			$query = sprintf("SELECT * FROM information_schema.columns WHERE table_schema='%s' AND table_name='%s';", $db_name, $table);
+			$stmt = $db->prepare($query);
+			$result	= $stmt->execute();
+			$rows = $stmt->fetchAll(PDO::FETCH_NAMED);
+			$row_count= count($rows);
 			//printf('<pre>%s</pre>', print_r($rows, true));
 			for ($i = 0; $i < $row_count; $i++) {
 				array_push($fields, $rows[$i]['COLUMN_NAME']);
@@ -234,5 +234,3 @@ if ($db_type == "odbc") {
 		   echo 'Connection failed: ' . $e->getMessage();
 		}
 } //end if db_type odbc
-
-?>

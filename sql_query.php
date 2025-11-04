@@ -17,7 +17,7 @@
 
 	The Initial Developer of the Original Code is
 	Mark J Crane <markjcrane@fusionpbx.com>
-	Portions created by the Initial Developer are Copyright (C) 2008-2024
+	Portions created by the Initial Developer are Copyright (C) 2008-2025
 	the Initial Developer. All Rights Reserved.
 
 	Contributor(s):
@@ -30,10 +30,7 @@
 	require_once "resources/check_auth.php";
 
 //permissions
-	if (permission_exists('sql_query')) {
-		//access granted
-	}
-	else {
+	if (!permission_exists('sql_query')) {
 		echo "access denied";
 		exit;
 	}
@@ -42,12 +39,15 @@
 	$language = new text;
 	$text = $language->get();
 
+//connect to the database
+	$database = database::new();
+
 //load editor preferences/defaults
-	$setting_size = (!empty($_SESSION["editor"]["font_size"]["text"])) ? $_SESSION["editor"]["font_size"]["text"] : '12px';
-	$setting_theme = (!empty($_SESSION["editor"]["theme"]["text"])) ? $_SESSION["editor"]["theme"]["text"] : 'cobalt';
-	$setting_invisibles = (!empty($_SESSION["editor"]["invisibles"]["boolean"])) ? $_SESSION["editor"]["invisibles"]["boolean"] : 'false';
-	$setting_indenting = (!empty($_SESSION["editor"]["indent_guides"]["boolean"])) ? $_SESSION["editor"]["indent_guides"]["boolean"] : 'false';
-	$setting_numbering = (!empty($_SESSION["editor"]["line_numbers"]["boolean"])) ? $_SESSION["editor"]["line_numbers"]["boolean"] : 'true';
+	$setting_size = $settings->get('editor','font_size','12px');
+	$setting_theme = $settings->get('editor','theme','cobalt');
+	$setting_invisibles = $settings->get('editor','invisibles',false);
+	$setting_indenting = $settings->get('editor','indent_guides',false);
+	$setting_numbering = $settings->get('editor','line_numbers',true);
 
 //get the html values and set them as variables
 	$code = trim($_POST["code"] ?? '');
@@ -170,7 +170,6 @@
 		case 'pgsql': $sql = "select table_name as name from information_schema.tables where table_schema='public' and (table_type='BASE TABLE' or table_type='VIEW') order by table_type, table_name"; break;
 		case 'mysql': $sql = "show tables"; break;
 	}
-	$database = new database;
 	$result = $database->select($sql, null, 'all');
 	if (is_array($result) && @sizeof($result) != 0) {
 		foreach ($result as &$row) {
@@ -337,12 +336,12 @@
 				theme: 'ace/theme/'+document.getElementById('theme').options[document.getElementById('theme').selectedIndex].value,
 				selectionStyle: 'text',
 				cursorStyle: 'smooth',
-				showInvisibles: <?php echo $setting_invisibles;?>,
-				displayIndentGuides: <?php echo $setting_indenting;?>,
-				showLineNumbers: <?php echo $setting_numbering;?>,
+				showInvisibles: <?php echo $setting_invisibles ? 'true' : 'false';?>,
+				displayIndentGuides: <?php echo $setting_indenting ? 'true' : 'false';?>,
+				showLineNumbers: <?php echo $setting_numbering ? 'true' : 'false';?>,
 				showGutter: true,
 				scrollPastEnd: true,
-				fadeFoldWidgets: <?php echo $setting_numbering;?>,
+				fadeFoldWidgets: <?php echo $setting_numbering ? 'true' : 'false';?>,
 				showPrintMargin: false,
 				highlightGutterLine: false,
 				useSoftTabs: false
@@ -374,5 +373,3 @@
 
 //show the footer
 	require_once "resources/footer.php";
-
-?>
