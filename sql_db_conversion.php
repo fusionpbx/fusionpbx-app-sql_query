@@ -360,7 +360,7 @@
 		$sql = "show tables";
 	}
 	//get the default schema structure
-		$prep_statement = $db_dest->prepare(check_sql($sql));
+		$prep_statement = $db_dest->prepare($sql);
 		$prep_statement->execute();
 		$result_dest = $prep_statement->fetchAll(PDO::FETCH_NAMED);
 	//clean the content from the table
@@ -391,8 +391,8 @@
 					$tmp_sql = "show columns from $table_name;";
 				}
 				if (strlen($tmp_sql) > 0) {
-					$prep_statement_2 = $db_dest->prepare(check_sql($tmp_sql));
-					//$prep_statement_2 = $db->prepare(check_sql($tmp_sql));
+					$prep_statement_2 = $db_dest->prepare($tmp_sql);
+					//$prep_statement_2 = $db->prepare($tmp_sql);
 					if ($prep_statement_2) {
 						$prep_statement_2->execute();
 						$result2 = $prep_statement_2->fetchAll(PDO::FETCH_ASSOC);
@@ -435,7 +435,7 @@
 			//get the table source data
 				$tmp_sql = "select * from $table_name";
 				if (strlen($tmp_sql) > 0) {
-					$prep_statement_2 = $db->prepare(check_sql($tmp_sql));
+					$prep_statement_2 = $db->prepare($tmp_sql);
 					if ($prep_statement_2) {
 						$prep_statement_2->execute();
 						$result2 = $prep_statement_2->fetchAll(PDO::FETCH_ASSOC);
