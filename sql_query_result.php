@@ -305,7 +305,6 @@
 					$sql = "select * from ".$table_name;
 				}
 				if (strlen($sql) > 0) {
-					$database = new database;
 					$result = $database->execute($sql);
 					$message = $database->message;
 
