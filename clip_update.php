@@ -43,6 +43,14 @@
 
 //process the HTTP POST
 	if (count($_POST) > 0) {
+		//validate the token
+			$token = new token;
+			if (!$token->validate($_SERVER['PHP_SELF'])) {
+				message::add($text['message-invalid_token'],'negative');
+				header('Location: clip_options.php');
+				exit;
+			}
+
 		$clip_uuid = $_POST["id"];
 		$clip_name = $_POST["clip_name"];
 		$clip_folder = $_POST["clip_folder"];
@@ -99,6 +107,10 @@
 			unset($sql, $parameters, $row);
 	}
 
+//create token
+	$object = new token;
+	$token = $object->create($_SERVER['PHP_SELF']);
+
 //show the content
 	require_once "header.php";
 	echo "<table width='100%' border='0' cellpadding='0' cellspacing='2'>\n";
@@ -106,39 +118,40 @@
 	echo "	<td align='left'>\n";
 
 	echo "<form method='post' action=''>";
+	echo "<input type='hidden' name='".$token['name']."' value='".$token['hash']."'>\n";
 	echo "<table border='0' width='100%'>";
 	echo "	<tr>";
 	echo "		<td>Name</td>";
-	echo "		<td><input type='text' class='txt' name='clip_name' value='".$clip_name."'></td>";
+	echo "		<td><input type='text' class='txt' name='clip_name' value='".escape($clip_name)."'></td>";
 	echo "	</tr>";
 
 	echo "	<tr>";
 	echo "		<td>Folder</td>";
-	echo "		<td><input type='text' class='txt'  name='clip_folder' value='".$clip_folder."'></td>";
+	echo "		<td><input type='text' class='txt'  name='clip_folder' value='".escape($clip_folder)."'></td>";
 	echo "	</tr>";
 
 	echo "	<tr>";
 	echo "		<td colspan='2'>Before Selection<br>";
-	echo "		  <textarea class='txt' style='resize: vertical;' name='clip_text_start'>".$clip_text_start."</textarea>";
+	echo "		  <textarea class='txt' style='resize: vertical;' name='clip_text_start'>".escape($clip_text_start)."</textarea>";
 	echo "		</td>";
 	echo "	</tr>";
 
 	echo "	<tr>";
 	echo "		<td colspan='2'>After Selection<br>";
-	echo "		  <textarea class='txt' style='resize: vertical;' name='clip_text_end'>".$clip_text_end."</textarea>";
+	echo "		  <textarea class='txt' style='resize: vertical;' name='clip_text_end'>".escape($clip_text_end)."</textarea>";
 	echo "		</td>";
 	echo "	</tr>";
 
 	echo "	<tr>";
 	echo "		<td colspan='2'>Notes<br>";
-	echo "		  <textarea class='txt' style='resize: vertical;' name='clip_desc'>".$clip_desc."</textarea>";
+	echo "		  <textarea class='txt' style='resize: vertical;' name='clip_desc'>".escape($clip_desc)."</textarea>";
 	echo "		</td>";
 	echo "	</tr>";
 
 	echo "	<tr>";
 	echo "		<td align='left'><input type='button' value='".$text['button-back']."' onclick='history.back()'></td>";
 	echo "		<td align='right'>";
-	echo "			<input type='hidden' name='id' value='".$clip_uuid."'>";
+	echo "			<input type='hidden' name='id' value='".escape($clip_uuid)."'>";
 	echo "			<input type='submit' name='submit' value='Update'>";
 	echo "		</td>";
 	echo "	</tr>";

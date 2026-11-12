@@ -317,7 +317,7 @@
 			</td>
 		</tr>
 	</table>
-	<div id='editor' style='resize:vertical; overflow:auto;'><?php echo $command; ?></div>
+	<div id='editor' style='resize:vertical; overflow:auto;'><?php echo escape($command); ?></div>
 
 	<?php
 	echo "			</td>";

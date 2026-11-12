@@ -39,6 +39,10 @@
 	$language = new text;
 	$text = $language->get();
 
+//create token
+	$object = new token;
+	$token = $object->create($_SERVER['PHP_SELF']);
+
 //prepare the header
 	$title = $text['title-manage-clips'];
 	require_once "header.php";
@@ -57,7 +61,7 @@
 	echo "<table cellpadding='0' cellspacing='0' border='0' width='100%' height='100%'>";
 	echo "  <tr><td><input type='button' class='btn' onclick=\"window.location='clip_add.php'\" value='".$text['button-add-clip']."'></td></tr>\n";
 	echo "  <tr><td><input type='button' class='btn' onclick=\"window.location='clip_update.php?id='+document.getElementById('clip_uuid').value;\" value='".$text['button-edit-clip']."'></td></tr>\n";
-	echo "  <tr><td><input type='button' class='btn' onclick=\"if (confirm('".$text['message-delete-clip']."')){ window.location='clip_delete.php?id='+document.getElementById('clip_uuid').value; }\" value='".$text['button-delete']."'></td></tr>\n";
+	echo "  <tr><td><input type='button' class='btn' onclick=\"if (confirm('".$text['message-delete-clip']."')){ window.location='clip_delete.php?id='+document.getElementById('clip_uuid').value+'&".$token['name']."=".$token['hash']."'; }\" value='".$text['button-delete']."'></td></tr>\n";
 	echo "  <tr><td height='100%'>&nbsp;</td></tr>\n";
 	echo "  <tr><td><input type='button' class='btn' onclick='opener.location.reload(); self.close();' value='".$text['button-close']."'></td></tr>\n";
 	echo "</table>";

@@ -43,6 +43,14 @@
 	$database = database::new();
 
 if (count($_POST)>0) {
+	//validate the token
+	$token = new token;
+	if (!$token->validate($_SERVER['PHP_SELF'])) {
+		message::add($text['message-invalid_token'],'negative');
+		header('Location: clip_options.php');
+		exit;
+	}
+
 	$clip_name = $_POST["clip_name"];
 	$clip_folder = $_POST["clip_folder"];
 	$clip_text_start = $_POST["clip_text_start"];
@@ -78,6 +86,10 @@ if (count($_POST)>0) {
 	exit;
 }
 
+//create token
+	$object = new token;
+	$token = $object->create($_SERVER['PHP_SELF']);
+
 //show the content
 	require_once "header.php";
 	echo "<table width='100%' border='0' cellpadding='0' cellspacing='2'>\n";
@@ -85,6 +97,7 @@ if (count($_POST)>0) {
 	echo "	<td align='left'>\n";
 
 	echo "<form method='post' action=''>";
+	echo "<input type='hidden' name='".$token['name']."' value='".$token['hash']."'>\n";
 	echo "<table width='100%' border='0'>";
 	echo "	<tr>";
 	echo "		<td>Name</td>";

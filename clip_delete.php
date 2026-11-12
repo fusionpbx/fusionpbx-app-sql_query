@@ -42,6 +42,14 @@
 //connect to the database
 	$database = database::new();
 
+//validate the token (created by the clip options page that initiated this request)
+	$token = new token;
+	if (!$token->validate(dirname($_SERVER['PHP_SELF']) . '/clip_options.php')) {
+		message::add($text['message-invalid_token'],'negative');
+		header('Location: clip_options.php');
+		exit;
+	}
+
 //get the uuid from http values
 	$clip_uuid = $_GET["id"];
 

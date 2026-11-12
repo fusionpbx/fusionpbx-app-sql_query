@@ -199,7 +199,7 @@
 			if (!empty(is_array($array)) && is_array($array)) {
 				foreach ($array as $folder_name => $clips) {
 					//folder
-					echo "<a onclick='Toggle(this);' style='display: block; cursor: pointer; text-decoration: none;'><img src='resources/images/icon_folder.png' border='none' align='absmiddle' style='margin: 1px 2px 3px 0px;'>".$folder_name."</a>";
+					echo "<a onclick='Toggle(this);' style='display: block; cursor: pointer; text-decoration: none;'><img src='resources/images/icon_folder.png' border='none' align='absmiddle' style='margin: 1px 2px 3px 0px;'>".escape($folder_name)."</a>";
 					echo "<div style='display: none; padding-left: 16px;'>\n";
 
 					//clips
@@ -210,8 +210,8 @@
 						echo "<img src='resources/images/icon_file.png' border='0' align='absmiddle' style='margin: 1px 2px 3px -1px;'>";
 						echo escape($row['name']);
 						echo "</a>\n";
-						echo "<textarea style='display: none' id='before_".$row['uuid']."'>".$row['before']."</textarea>\n";
-						echo "<textarea style='display: none' id='after_".$row['uuid']."'>".$row['after']."</textarea>\n";
+						echo "<textarea style='display: none' id='before_".$row['uuid']."'>".escape_textarea($row['before'])."</textarea>\n";
+						echo "<textarea style='display: none' id='after_".$row['uuid']."'>".escape_textarea($row['after'])."</textarea>\n";
 						echo "</div>\n";
 					}
 
